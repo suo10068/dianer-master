@@ -1,0 +1,38 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /dianer
+
+spring:
+  application:
+    name: server-01 # 服务名
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 115.28.136.78
+    port: 6379
+    password: suo2019
+
+#eureka主机名，会在控制页面中显示
+eureka:
+  instance:
+    hostname: localhost
+    status-page-url: http://115.28.136.78:8081/index # eureka服务器页面中status的请求路径
+  client:
+    serviceUrl:
+      defaultZone: http://anxminise:123456@115.28.136.78:8080/eureka/ # eureka注册中心服务器地址
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.dianer.entity
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+

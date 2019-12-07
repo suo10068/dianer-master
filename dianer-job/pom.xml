@@ -8,7 +8,7 @@
         <version>1.0</version>
     </parent>
     <artifactId>dianer-job</artifactId>
-    <name>dianer job</name>
+    <name>DIANER JOB</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

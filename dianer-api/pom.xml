@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>dianer-api</artifactId>
     <packaging>jar</packaging>
-    <name>dianer-api</name>
+    <name>DIANER API</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

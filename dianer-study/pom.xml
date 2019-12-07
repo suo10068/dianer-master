@@ -9,10 +9,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>dianer-server</artifactId>
+    <artifactId>dianer-study</artifactId>
     <packaging>jar</packaging>
-    <name>DIANER SERVER</name>
-    <description>Demo project for Spring Boot</description>
+    <name>DIANER STUDY</name>
+    <description>Demo project for Spring Boot Study</description>
 
     <dependencies>
         <dependency>

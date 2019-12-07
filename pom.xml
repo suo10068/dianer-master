@@ -25,6 +25,7 @@
         <module>dianer-server</module>
         <module>dianer-api</module>
         <module>eureka-server</module>
+        <module>dianer-study</module>
     </modules>
 
     <dependencyManagement>
