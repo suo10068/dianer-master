@@ -1,4 +1,4 @@
-package com.dianer.study.设计模式.代理模式.Cglib;
+package com.dianer.study.学习.设计模式.代理模式.Cglib;
 
 public class Main {
     public static void main(String[] args) {

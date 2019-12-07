@@ -1,4 +1,4 @@
-package com.dianer.study.设计模式.代理模式.JDK动态代理;
+package com.dianer.study.学习.设计模式.代理模式.JDK动态代理;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

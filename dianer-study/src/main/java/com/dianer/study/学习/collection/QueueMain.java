@@ -14,14 +14,9 @@ public class QueueMain {
         }
         queue.add(4);
 
-
         LinkedList<String> linkedList = new LinkedList<>();
         linkedList.push("A");
         linkedList.add("B");
 
     }
-
-
-
-
 }

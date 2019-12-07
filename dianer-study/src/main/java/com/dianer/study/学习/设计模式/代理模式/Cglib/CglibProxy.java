@@ -1,4 +1,4 @@
-package com.dianer.study.设计模式.代理模式.Cglib;
+package com.dianer.study.学习.设计模式.代理模式.Cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
