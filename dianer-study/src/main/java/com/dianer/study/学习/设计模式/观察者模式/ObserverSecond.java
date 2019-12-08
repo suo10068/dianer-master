@@ -1,8 +1,8 @@
 package com.dianer.study.学习.设计模式.观察者模式;
 
-public class SecondObserver extends Observer {
+public class ObserverSecond extends Observer {
 
-    public SecondObserver(Subject subject) {
+    public ObserverSecond(Subject subject) {
         this.subject = subject;
     }
 

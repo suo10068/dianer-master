@@ -3,6 +3,7 @@ package com.dianer.study.学习.设计模式.观察者模式;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Subject {
 
     private List<Observer> observers = new ArrayList<>();

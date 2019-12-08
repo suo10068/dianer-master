@@ -20,16 +20,16 @@ package com.dianer.study.学习.设计模式.观察者模式;
 public class Main {
     public static void main(String[] args) {
 
+        // 被观察对象
         Subject subject = new Subject();
-
-        FirstObserver firstObserver = new FirstObserver(subject);
-        SecondObserver secondObserver = new SecondObserver(subject);
-
+        // 两个观察者
+        ObserverFirst firstObserver = new ObserverFirst(subject);
+        ObserverSecond secondObserver = new ObserverSecond(subject);
+        // 添加观察者
         subject.attach(firstObserver);
         subject.attach(secondObserver);
+
         subject.setState(4);
-
-
 
     }
 }
