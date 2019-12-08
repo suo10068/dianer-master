@@ -11,10 +11,24 @@ spring:
     password: 123456
     url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+#  单机
   redis:
     host: 115.28.136.78
     port: 6379
-    password: suo2019
+    password: Aa123456
+# Redis Sentinel 哨兵
+#  redis:
+#    password: Aa123456
+#    lettuce:
+#      pool:
+#        max-idle: 8
+#        max-active: 8
+#        min-idle: 5
+#        max-wait: 100000ms
+#    sentinel:
+#      master: mymaster
+#      nodes: 115.28.136.78:26379
+
 
 #eureka主机名，会在控制页面中显示
 eureka:

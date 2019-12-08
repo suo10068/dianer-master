@@ -26,6 +26,7 @@
         <module>dianer-api</module>
         <module>eureka-server</module>
         <module>dianer-study</module>
+        <module>seckill-demo</module>
     </modules>
 
     <dependencyManagement>

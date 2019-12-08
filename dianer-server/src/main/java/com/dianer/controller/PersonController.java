@@ -23,12 +23,11 @@ public class PersonController {
 
     @GetMapping(value = "/a")
     public List<Person> test(@Valid Person person) {
-
         log.info("请求参数：{}", person);
         return personMapper.queryById(String.valueOf(person.getId()));
     }
 
-    @CacheLock(prefix = "token", expire = 10)
+    @CacheLock(prefix = "token", expire = 30)
     @GetMapping(value = "/b")
     public String test2(@CacheParam String token) {
         log.info("=== {} ===", token);
