@@ -1,7 +1,7 @@
 package com.dianer.study.annotation.interceptor;
 
-import com.dianer.annotation.CacheLock;
-import com.dianer.common.CacheKeyGenerator;
+import com.dianer.study.annotation.CacheLock;
+import com.dianer.study.annotation.common.CacheKeyGenerator;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,7 +32,7 @@ public class LockMethodInterceptor {
     private final CacheKeyGenerator cacheKeyGenerator;
 
 
-    @Around("execution(public * *(..)) && @annotation(com.dianer.annotation.CacheLock)")
+    @Around("execution(public * *(..)) && @annotation(com.dianer.study.annotation.CacheLock)")
     public Object interceptor(ProceedingJoinPoint pjp) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
