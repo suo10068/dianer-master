@@ -14,98 +14,69 @@ HashMap在put的时候会先检查当前数组的length,如果插入新的值的
 
 ```
 //HashMap数组扩容
-
 void resize(int newCapacity) {
-
-Entry[] oldTable = table;
-
-int oldCapacity = oldTable.length;
-
-//如果当前的数组长度已经达到最大值，则不在进行调整
-
-if (oldCapacity == MAXIMUM_CAPACITY) {
-
-threshold = Integer.MAX_VALUE;
-
-return;
-
+    Entry[] oldTable = table;
+    int oldCapacity = oldTable.length;
+    // 如果当前的数组长度已经达到最大值，则不在进行调整
+    if (oldCapacity == MAXIMUM_CAPACITY) {
+        threshold = Integer.MAX_VALUE;
+        return;
+    }
+    //根据传入参数的长度定义新的数组
+    Entry[] newTable = new Entry[newCapacity];
+    //按照新的规则，将旧数组中的元素转移到新数组中
+    transfer(newTable);
+    table = newTable;
+    // 更新临界值
+    threshold = (int)(newCapacity * loadFactor);
 }
 
-//根据传入参数的长度定义新的数组
-
-Entry[] newTable = new Entry[newCapacity];
-
-//按照新的规则，将旧数组中的元素转移到新数组中
-
-transfer(newTable);
-
-table = newTable;
-
-//更新临界值
-
-threshold = (int)(newCapacity * loadFactor);
-
-}
-
-//旧数组中元素往新数组中迁移
-
+// 旧数组中元素往新数组中迁移
 void transfer(Entry[] newTable) {
-
-//旧数组
-
-Entry[] src = table;
-
-//新数组长度
-
-int newCapacity = newTable.length;
-
-//遍历旧数组
-
-for (int j = 0; j < src.length; j++) {
-
-Entry e = src[j];
-
-if (e != null) {
-
-src[j] = null;
-
-do {
-
-Entry next = e.next;
-
-int i = indexFor(e.hash, newCapacity);//放在新数组中的index位置
-
-e.next = newTable[i];//实现链表结构，新加入的放在链头，之前的的数据放在链尾
-
-newTable[i] = e;
-
-e = next;
-
-} while (e != null);
-
-}
-
-}
-
+    // 旧数组
+    Entry[] src = table;
+    // 新数组长度
+    int newCapacity = newTable.length;
+    // 遍历旧数组
+    for (int j = 0; j < src.length; j++) {
+        Entry e = src[j];
+        if (e != null) {
+            src[j] = null;
+            do {
+                Entry next = e.next;
+                int i = indexFor(e.hash, newCapacity);// 放在新数组中的index位置
+                e.next = newTable[i];// 实现链表结构，新加入的放在链头，之前的的数据放在链尾
+                newTable[i] = e;
+                e = next;
+            } while (e != null);
+        }
+    }
 }
 
 ```
-
 
 这是1.7中的代码，1.8中引入了红黑树的概念，代码会相对复杂一些。
 
 #### 二、HashMap在扩容的时候为什么容量都是原来的2倍，即容量为2^n
 
 HashMap 在计算数组中key的位置时，使用的算法为：
+```
 /* * Returns index for hash code h. */
 static int indexFor(int h, int length) {
-// assert Integer.bitCount(length) == 1 : “length must be a non-zero power of 2”; return h & (length-1); }
-
-即对key的hashcode 与当前数组容量 -1 进行与操作 我们假设有一个容量为分别为15 和 16 的hashMap ，有两个key的hashcode 分别为4和5，进行indexFor操作之后：
-
-H & (length -1) hash & table.length-1 4 & (15 - 1) 0100 & 1110 = 0100 5 & （ 15 -1 ） 0101 & 1110 = 0100
-4 & (16 - 1) 0100 & 1111 = 0100 5 & （ 16 -1 ） 0101 & 1111 = 0101
-
+    // assert Integer.bitCount(length) == 1 : “length must be a non-zero power of 2”; 
+    return h & (length-1); 
+}
+```
+即对key的hashcode 与当前数组容量 -1 进行与操作。
+我们假设有一个容量为分别为15 和 16 的hashMap，有两个key的hashcode 分别为4和5，进行indexFor操作之后：
+````
+H & (length -1) 
+hash & table.length-1 
+4 & (15 - 1) --> 0100 & 1110 = 0100 
+5 & (15 - 1) --> 0101 & 1110 = 0100
+4 & (16 - 1) --> 0100 & 1111 = 0100 
+5 & (16 - 1) --> 0101 & 1111 = 0101
+````
 我们能够看到在容量为16时进行indexFor操作之后获得相同结果的几率要比容量为15时的几率要小，这样能够减少出现hash冲突的几率，从而提高查询效率。2 ^ n是一个非常神奇的数字。
 
 #### 三、put时出现相同的hashcode会怎样？
@@ -188,7 +159,10 @@ Hashtable(同一把锁) :使用 synchronized 来保证线程安全，效率非�
 
 #### 九、HashMap 多线程操作导致死循环问题
 
-在多线程下，进行 put 操作会导致 HashMap 死循环，原因在于 HashMap 的扩容 resize()方法。由于扩容是新建一个数组，复制原数据到数组。由于数组下标挂有链表，所以需要复制链表，但是多线程操作有可能导致环形链表。复制链表过程如下:
+在多线程下，进行 put 操作会导致 HashMap 死循环，原因在于 HashMap 的扩容 resize()方法。由于扩容是新建一个数组，复制原数据到数组。由于数组下标挂有链表，所以需要复制链表，但是多线程操作有可能导致环形链表。
+
+复制链表过程如下：
+
 以下模拟2个线程同时扩容。假设，当前 HashMap 的空间为2（临界值为1），hashcode 分别为 0 和 1，在散列地址 0 处有元素 A 和 B，这时候要添加元素 C，C 经过 hash 运算，得到散列地址为 1，这时候由于超过了临界值，空间不够，需要调用 resize 方法进行扩容，那么在多线程条件下，会出现条件竞争，模拟过程如下：
 
 线程一：读取到当前的 HashMap 情况，在准备扩容时，线程二介入

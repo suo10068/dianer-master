@@ -24,7 +24,7 @@ package com.dianer.study.学习.数据结构;
  * 0 <= A[i] < 40000
  */
 
-public class 题_1 {
+public class 题目_1 {
 
     public static void main(String[] args) {
         int[] A = {1, 2, 2};
