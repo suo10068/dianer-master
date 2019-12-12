@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: dianer-consumer # 服务名
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/ # eureka注册中心服务器地址
+
+ribbon:
+  eureka:
+    enabled: true
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 10000
+        connectTimeout: 10000

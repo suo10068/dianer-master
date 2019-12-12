@@ -27,7 +27,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>2.2.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -130,7 +129,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>server</finalName>
+        <finalName>dianer-server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

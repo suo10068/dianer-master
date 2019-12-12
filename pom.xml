@@ -21,10 +21,11 @@
     </properties>
 
     <modules>
-        <module>dianer-job</module>
-        <module>dianer-server</module>
         <module>dianer-api</module>
+        <module>dianer-server</module>
+        <module>dianer-consumer</module>
         <module>eureka-server</module>
+        <module>dianer-job</module>
         <module>dianer-study</module>
         <module>seckill-demo</module>
     </modules>

@@ -14,8 +14,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Log4j2
-@RequestMapping(value = "/person")
 @RestController
+@RequestMapping(value = "/person")
 public class PersonController {
 
     @Autowired
@@ -33,4 +33,11 @@ public class PersonController {
         log.info("=== {} ===", token);
         return "success - " + token;
     }
+
+    @GetMapping(value = "/c")
+    public String test3() {
+        log.info("请求参数：{}");
+        return "AAAA";
+    }
+
 }

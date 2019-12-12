@@ -1,0 +1,32 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /dianer
+
+spring:
+  application:
+    name: dianer-consumer
+
+#eureka主机名，会在控制页面中显示
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://115.28.136.78:7001/eureka/ # eureka注册中心服务器地址
+
+ribbon:
+  eureka:
+    enabled: true
+
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 10000
+        connectTimeout: 10000

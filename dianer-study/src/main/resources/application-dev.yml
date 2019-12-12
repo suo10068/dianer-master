@@ -1,7 +1,7 @@
 server:
-  port: 8081
+  port: 8080
   servlet:
-    context-path: /dianer
+    context-path: /
 
 spring:
   application:
@@ -16,19 +16,19 @@ spring:
     port: 6379
     password: suo2019
 
-#eureka主机名，会在控制页面中显示
-eureka:
-  instance:
-    hostname: localhost
-    status-page-url: http://115.28.136.78:8081/index # eureka服务器页面中status的请求路径
-  client:
-    serviceUrl:
-      defaultZone: http://anxminise:123456@115.28.136.78:8080/eureka/ # eureka注册中心服务器地址
+# security
+#security:
+#  basic:
+#    enabled: false
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.dianer.entity
 
+# redisson lock
+redisson:
+  address: redis://115.28.136.78:6379
+  password: Aa123456
 #showSql
 logging:
   level:

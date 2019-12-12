@@ -71,7 +71,7 @@ dubbox是当当网基于dubbo上做了一些扩展，如加了服务可restful�
 
 ####  13、你还了解别的分布式框架吗？
 
-别的还有spring的spring cloud，facebook的thrift，twitter的finagle等。
+别的还有Spring的Spring Cloud，facebook的thrift，twitter的finagle等。
 
 #### 14、dubbo中zookeeper做注册中心，如果注册中心集群都挂掉，那发布者和订阅者还能通信吗?
 
