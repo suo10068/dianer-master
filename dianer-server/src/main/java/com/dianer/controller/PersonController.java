@@ -2,6 +2,7 @@ package com.dianer.controller;
 
 import com.dianer.annotation.CacheLock;
 import com.dianer.annotation.CacheParam;
+import com.dianer.api.PersonService;
 import com.dianer.entity.Person;
 import com.dianer.mapper.PersonMapper;
 import lombok.extern.log4j.Log4j2;
@@ -16,7 +17,7 @@ import java.util.List;
 @Log4j2
 @RestController
 @RequestMapping(value = "/person")
-public class PersonController {
+public class PersonController implements PersonService {
 
     @Autowired
     private PersonMapper personMapper;
@@ -34,10 +35,10 @@ public class PersonController {
         return "success - " + token;
     }
 
-    @GetMapping(value = "/c")
+    @Override
     public String test3() {
         log.info("请求参数：{}");
-        return "AAAA";
+        return "【AAAA】";
     }
 
 }
