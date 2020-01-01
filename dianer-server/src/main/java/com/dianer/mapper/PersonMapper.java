@@ -8,5 +8,6 @@ import java.util.List;
 public interface PersonMapper {
 
     List<Person> queryById(String id);
+
     void insert(Person person);
 }

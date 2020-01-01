@@ -88,6 +88,7 @@ public class LinkedList {
 
     /**
      * 递归反转法
+     *
      * @param node
      * @return
      */
@@ -102,12 +103,12 @@ public class LinkedList {
     }
 
 
-
     static class Node {
         int index;
         Node next;
 
-        Node() {}
+        Node() {
+        }
 
         Node(int index) {
             this.index = index;

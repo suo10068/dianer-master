@@ -11,7 +11,8 @@ public class 阶乘 {
         System.out.println("2 ==" + fact2(n));
     }
 
-    /** 时间复杂度
+    /**
+     * 时间复杂度
      * 大O表示法，O(n²) 表示 T(n) 的近似值
      * 记作 T(n) = O(n²)
      */

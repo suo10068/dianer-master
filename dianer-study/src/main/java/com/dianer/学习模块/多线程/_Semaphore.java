@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 /**
  * Semaphore(信号量)
  * 用来控制访问特定资源的线程数量，通过协调各个线程，以保证合理的使用公共资源
- *
+ * <p>
  * 应用场景：流量控制
  */
 public class _Semaphore {

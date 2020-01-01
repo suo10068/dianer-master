@@ -23,6 +23,7 @@ public class RedissonConfiguration {
 
     /**
      * 单机模式自动装配
+     *
      * @return
      */
     @Bean

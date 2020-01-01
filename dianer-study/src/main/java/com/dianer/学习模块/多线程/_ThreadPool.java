@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class _ThreadPool {
 
-    private static ThreadPoolExecutor executor = (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+    private static ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
@@ -17,7 +17,7 @@ public class _ThreadPool {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("[当前线程："+ Thread.currentThread().getName() +"]");
+                    System.out.println("[当前线程：" + Thread.currentThread().getName() + "]");
                 }
             });
         }

@@ -6,8 +6,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 1、HashMap 与 ConcurrentHashMap
  * 2
- *
- *
  */
 public class JavaGuide {
     public static void main(String[] args) {

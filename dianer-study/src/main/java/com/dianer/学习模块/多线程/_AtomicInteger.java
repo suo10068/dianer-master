@@ -29,7 +29,8 @@ public class _AtomicInteger {
                 }
             }).start();
         }
-        while (atomicInteger.intValue() > 0) {}
+        while (atomicInteger.intValue() > 0) {
+        }
         System.out.println("老司机发车。。。。");
     }
 }

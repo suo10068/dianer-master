@@ -7,7 +7,8 @@ package com.dianer.学习模块.设计模式.单例模式;
  */
 public class Singleton_2 {
 
-    private Singleton_2(){}
+    private Singleton_2() {
+    }
 
     private static class Instance {
         private static final Singleton_2 singleton = new Singleton_2();

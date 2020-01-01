@@ -26,7 +26,8 @@ public class Main {
 
     static class Key {
         int a;
-        Key(){
+
+        Key() {
             a = new Random().nextInt(10);
         }
 

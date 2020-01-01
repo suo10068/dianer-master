@@ -33,7 +33,6 @@ public class _ReentrantLock {
     }
 
 
-
     private void lock_1() {
         new Thread(new Runnable() {
             @Override
@@ -67,13 +66,13 @@ public class _ReentrantLock {
     }
 
     private void lock_2(String name) {
-        new Thread(()->{
+        new Thread(() -> {
             try {
-                if (lock == 1){
+                if (lock == 1) {
                     lock1.lockInterruptibly();
                     try {
                         TimeUnit.MILLISECONDS.sleep(500);
-                    } catch (InterruptedException e){
+                    } catch (InterruptedException e) {
 
                     }
                     lock2.lockInterruptibly();
@@ -81,12 +80,12 @@ public class _ReentrantLock {
                     lock2.lockInterruptibly();
                     try {
                         Thread.sleep(500);
-                    } catch (InterruptedException e){
+                    } catch (InterruptedException e) {
 
                     }
                     lock1.lockInterruptibly();
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 if (lock1.isHeldByCurrentThread()) {

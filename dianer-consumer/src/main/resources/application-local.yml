@@ -21,7 +21,7 @@ logging:
   level:
     com:
       example:
-        mapper : debug
+        mapper: debug
 feign:
   client:
     config:

@@ -57,8 +57,8 @@
             <!--<property name="rootInterface" value=""/>-->
         </javaClientGenerator>
 
-        <table tableName="person"  domainObjectName="Persons"
-               enableCountByExample="false"  enableUpdateByExample="false"
+        <table tableName="person" domainObjectName="Persons"
+               enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
 

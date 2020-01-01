@@ -20,7 +20,7 @@ public class _ReadWriteLock {
 
     ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
-    public void testMethod(){
+    public void testMethod() {
         ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
         ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
     }
