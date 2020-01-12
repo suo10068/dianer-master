@@ -12,7 +12,7 @@
     <artifactId>root</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>ROOT</name>
+    <name>DIANER ROOT</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -28,6 +28,7 @@
         <module>dianer-job</module>
         <module>dianer-study</module>
         <module>seckill-demo</module>
+        <module>dianer-spark</module>
     </modules>
 
     <dependencyManagement>
