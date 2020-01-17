@@ -3,7 +3,7 @@ package com.dianer.学习模块.设计模式.观察者模式;
 public class ObserverFirst extends Observer {
 
     public ObserverFirst(Subject subject) {
-        this.subject = subject;
+        super(subject);
     }
 
     @Override

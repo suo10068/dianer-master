@@ -29,7 +29,16 @@ public class Main {
         subject.attach(firstObserver);
         subject.attach(secondObserver);
 
-        subject.setState(4);
+        subject.attach(new Observer(subject) {
+            @Override
+            public void update() {
+                System.out.println("Third Observer state = " + this.subject.getState());
+            }
+        });
 
+        subject.setState(4);
     }
+
+
+
 }

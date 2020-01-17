@@ -7,5 +7,12 @@ public abstract class Observer {
 
     Subject subject; // 被观察对象
 
+    Observer(Subject subject) {
+        this.subject = subject;
+    }
+
+    protected Observer() {
+    }
+
     public abstract void update();
 }
