@@ -1,7 +1,5 @@
-package com.dianer.interceptor;
+package com.dianer.annotation;
 
-import com.dianer.annotation.CacheLock;
-import com.dianer.common.CacheKeyGenerator;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -49,12 +47,12 @@ public class LockMethodInterceptor {
                 lockRedisTemplate.expire(lockKey, lock.expire(), lock.timeUnit());
             } else {
                 // 按理来说 我们应该抛出一个自定义的 CacheLockException 异常;
-                throw new RuntimeException("请勿重复请求");
+                throw new CacheLockException("请勿重复请求");
             }
             try {
                 return pjp.proceed();
             } catch (Throwable throwable) {
-                throw new RuntimeException("系统异常");
+                throw new CacheLockException("系统异常");
             }
         } finally {
             // 解锁

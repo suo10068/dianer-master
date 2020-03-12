@@ -26,9 +26,10 @@ mybatis:
   type-aliases-package: com.dianer.entity
 
 # redisson lock
-redisson:
-  address: redis://115.28.136.78:6379
-  password: Aa123456
+#redisson:
+#  address: redis://115.28.136.78:6379
+#  password: Aa123456
+
 #showSql
 logging:
   level:

@@ -1,7 +1,7 @@
 package com.dianer.config;
 
-import com.dianer.common.CacheKeyGenerator;
-import com.dianer.common.LockKeyGenerator;
+import com.dianer.annotation.CacheKeyGenerator;
+import com.dianer.annotation.LockKeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

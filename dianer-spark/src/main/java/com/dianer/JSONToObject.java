@@ -12,7 +12,12 @@ public class JSONToObject {
     private static String FILE_PATH = "C:\\Users\\dianer\\Desktop\\log\\person";
 
     public static void main(String[] args) {
-        SparkSession sparkSession = SparkSession.builder().appName("JSON").master("local").getOrCreate();
+        SparkSession sparkSession = SparkSession
+                .builder()
+                .appName("JSON")
+                .master("local")
+                .getOrCreate();
+
         JavaRDD<String> javaRDD = sparkSession.read().textFile(FILE_PATH).toJavaRDD();
 
         JavaRDD<String> rstJavaRDD = javaRDD.filter(new Function<String, Boolean>() {
@@ -24,7 +29,7 @@ public class JSONToObject {
 
         System.out.println("性别为男的人数：" + rstJavaRDD.count());
 
-        for (String s: rstJavaRDD.collect()) {
+        for (String s : rstJavaRDD.collect()) {
             System.out.println(s);
         }
 

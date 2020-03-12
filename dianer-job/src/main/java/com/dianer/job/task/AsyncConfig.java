@@ -10,9 +10,9 @@ import java.util.concurrent.Executor;
 @Configuration
 @EnableAsync // 开启异步事件的支持
 public class AsyncConfig {
-    /*
-   此处成员变量应该使用@Value从配置中读取
-    */
+    /**
+     * 此处成员变量应该使用@Value从配置中读取
+     */
     private final static int CORE_POOL_SIZE = 10;
     private final static int MAX_POOL_SIZE = 200;
     private final static int QUEUE_CAPACITY = 10;

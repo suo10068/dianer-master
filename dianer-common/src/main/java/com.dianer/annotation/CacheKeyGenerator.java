@@ -1,4 +1,4 @@
-package com.dianer.common;
+package com.dianer.annotation;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 

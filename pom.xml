@@ -29,6 +29,7 @@
         <module>dianer-study</module>
         <module>seckill-demo</module>
         <module>dianer-spark</module>
+        <module>dianer-common</module>
     </modules>
 
     <dependencyManagement>

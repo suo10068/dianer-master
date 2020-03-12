@@ -1,7 +1,5 @@
-package com.dianer.common;
+package com.dianer.annotation;
 
-import com.dianer.annotation.CacheLock;
-import com.dianer.annotation.CacheParam;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.util.ReflectionUtils;
