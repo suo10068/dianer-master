@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.dianer</groupId>
-        <artifactId>root</artifactId>
+        <artifactId>dianer-study</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>eureka-server</artifactId>

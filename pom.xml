@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dianer</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>dianer-study</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>DIANER ROOT</name>
@@ -26,10 +26,11 @@
         <module>dianer-consumer</module>
         <module>eureka-server</module>
         <module>dianer-job</module>
-        <module>dianer-study</module>
-        <module>seckill-demo</module>
+        <module>dianer-summary</module>
+        <module>dianer-seckill</module>
         <module>dianer-spark</module>
         <module>dianer-common</module>
+        <module>dianer-bigdata</module>
     </modules>
 
     <dependencyManagement>
