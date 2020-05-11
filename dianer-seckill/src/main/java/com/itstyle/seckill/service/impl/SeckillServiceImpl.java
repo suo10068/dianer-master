@@ -3,10 +3,12 @@ package com.itstyle.seckill.service.impl;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +42,11 @@ public class SeckillServiceImpl implements ISeckillService {
 
     @Override
     public Seckill getById(long seckillId) {
-        return seckillRepository.findOne(seckillId);
+        Seckill seckill = new Seckill();
+        seckill.setSeckillId(seckillId);
+        Example<Seckill> example = Example.of(seckill);
+        Optional<Seckill> one = seckillRepository.findOne(example);
+        return one.get();
     }
 
     @Override
@@ -193,7 +199,7 @@ public class SeckillServiceImpl implements ISeckillService {
     @Override
     @Transactional
     public Result startSeckilDBOCC(long seckillId, long userId, long number) {
-        Seckill kill = seckillRepository.findOne(seckillId);
+        Seckill kill = getById(seckillId);
         //if(kill.getNumber()>0){
         if (kill.getNumber() >= number) {//剩余的数量应该要大于等于秒杀的数量
             //乐观锁

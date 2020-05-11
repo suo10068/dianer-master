@@ -25,13 +25,13 @@ eureka:
       defaultZone: http://localhost:7001/eureka/ # eureka注册中心服务器地址
 
 mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
+  # 搜索指定包别名
   type-aliases-package: com.dianer.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 #showSql
 logging:
   level:
-    com:
-      example:
-        mapper: debug
+    com.dianer.mapper: debug
 

@@ -1,10 +1,11 @@
 server:
-  context-path: /seckill
   port: 8080
   session-timeout: 60 # session最大超时时间(分钟)，默认为30
   tomcat:
     max-threads: 100 # tomcat最大线程数，默认为200
     uri-encoding: UTF-8 # tomcat的URI编码
+  servlet:
+    context-path: /seckill
 
 #spring boot从控制台打印出来的日志级别只有ERROR, WARN 还有INFO，如果你想要打印debug级别的日志
 #debug=true

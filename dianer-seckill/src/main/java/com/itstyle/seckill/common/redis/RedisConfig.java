@@ -8,7 +8,9 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -21,57 +23,60 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
-	/**
-	 * 自定义key(消息队列 暂时用不到 自行忽略)
+    /**
+     * 自定义key(消息队列 暂时用不到 自行忽略)
      * 此方法将会根据类名+方法名+所有参数的值生成唯一的一个key,即使@Cacheable中的value属性一样，key也会不一样。
-	 * @Author  程咬金
-	 * @return 
-	 * @Date	2017年8月13日
-	 * 更新日志
-	 * 2017年8月13日  程咬金 首次创建
-	 *
-	 */
-	@Bean
-	public KeyGenerator keyGenerator() {
-		return new KeyGenerator() {
-			@Override
-			public Object generate(Object target, Method method, Object... params) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(target.getClass().getName());
-				sb.append(method.getName());
-				for (Object obj : params) {
-					sb.append(obj.toString());
-				}
-				return sb.toString();
-			}
-		};
-	}
+     *
+     * @return
+     * @Author 程咬金
+     * @Date 2017年8月13日 更新日志
+     * 2017年8月13日  程咬金 首次创建
+     */
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return new KeyGenerator() {
+            @Override
+            public Object generate(Object target, Method method, Object... params) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(target.getClass().getName());
+                sb.append(method.getName());
+                for (Object obj : params) {
+                    sb.append(obj.toString());
+                }
+                return sb.toString();
+            }
+        };
+    }
+
     /**
      * 缓存管理器
-     * @Author  程咬金
+     *
      * @param redisTemplate
-     * @return  CacheManager
-     * @Date	2017年8月13日
-     * 更新日志
+     * @return CacheManager
+     * @Author 程咬金
+     * @Date 2017年8月13日 更新日志
      * 2017年8月13日  程咬金  首次创建
      */
-	@SuppressWarnings("rawtypes")
-	@Bean
-	public CacheManager cacheManager(RedisTemplate redisTemplate) {
-		return new RedisCacheManager(redisTemplate);
-	}
+    @SuppressWarnings("rawtypes")
+    @Bean
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().entryTtl(null);
+        return RedisCacheManager
+                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+                .cacheDefaults(redisCacheConfiguration).build();
+    }
+
     /**
      * 序列化Java对象
-     * @Author  程咬金
-     * @param factory
-     * @return  RedisTemplate<Object, Object>
-     * @Date	2017年8月13日
-     * 更新日志
-     * 2017年8月13日 程咬金  首次创建
      *
+     * @param factory
+     * @return RedisTemplate<Object, Object>
+     * @Author 程咬金
+     * @Date 2017年8月13日 更新日志
+     * 2017年8月13日 程咬金  首次创建
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	@Bean
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<Object, Object>();
         template.setConnectionFactory(connectionFactory);

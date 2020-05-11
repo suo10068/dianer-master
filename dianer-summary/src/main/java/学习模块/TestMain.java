@@ -3,6 +3,9 @@ package 学习模块;
 public class TestMain {
     public static int SIZE = 1000 * 1000;
 
+    private StringBuffer stringBuffer = new StringBuffer();
+    private StringBuilder stringBuilder = new StringBuilder();
+
     public static void main(String[] args) {
 
         while (true) {
