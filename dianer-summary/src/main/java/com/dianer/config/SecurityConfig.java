@@ -19,6 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 认证
+     * 说明：
+     *  1.这里采用的的是把用户角色保存在内存中，数据是写死的，当然数据可以从数据库中查出再写入内存中；
+     *  2.随后定义的三个用户，没有用户定义了其用户名，密码和角色
+     *  3.Security5默认要求密码使用加密，不加密的话就使用"{noop}123456"这样的写法，加密的话需要使用
+     *      PasswordEncoder的实现类进行加密
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -26,13 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("zhangsan").password("{noop}123456").roles("VIP1")
                 .and().withUser("lisi").password("{noop}123456").roles("VIP1, VIP2")
                 .and().withUser("wangwu").password("{noop}123456").roles("VIP1", "VIP2", "VIP3");
-        /*
-          说明：
-            1.这里采用的的是把用户角色保存在内存中，数据是写死的，当然数据可以从数据库中查出再写入内存中；
-            2.随后定义的三个用户，没有用户定义了其用户名，密码和角色
-            3.Security5默认要求密码使用加密，不加密的话就使用"{noop}123456"这样的写法，加密的话需要使用
-                PasswordEncoder的实现类进行加密
-         */
     }
 
     /**
@@ -44,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()        // 禁止隧道
                 .cors().disable()    // 禁止跨域
                 .headers().disable();// 禁止头部
+
         http.authorizeRequests()
                 .antMatchers("/", "/webjars/**", "/static/**").permitAll() // 所有的人都可以访问的路径
                 .antMatchers("/level1/**").hasRole("VIP1") // VIP1的用户可以访问level1下的所有路径

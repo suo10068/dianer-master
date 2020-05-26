@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.redisson.config.SentinelServersConfig;
 import org.redisson.config.SingleServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -28,6 +29,7 @@ public class RedissonConfiguration {
     @Bean
     @ConditionalOnProperty(name = "redisson.address")
     public RedissonClient redisson() {
+        System.out.println("Redission 单机模式 生效！！！");
         Config config = new Config();
         SingleServerConfig serverConfig = config.useSingleServer()
                 .setAddress(redssionProperties.getAddress())
@@ -42,30 +44,33 @@ public class RedissonConfiguration {
 
     /**
      * 哨兵模式自动装配
+     *
      * @return
      */
-    /*@Bean
-    @ConditionalOnProperty(name="redisson.master-name")
+    @Bean
+    @ConditionalOnProperty(name = "redisson.master-name")
     RedissonClient redissonSentinel() {
+        System.out.println("Redission 哨兵模式 生效！！！");
         Config config = new Config();
-        SentinelServersConfig serverConfig = config.useSentinelServers().addSentinelAddress(redssionProperties.getSentinelAddresses())
+        SentinelServersConfig serverConfig = config.useSentinelServers()
+                .addSentinelAddress(redssionProperties.getSentinelAddresses())
                 .setMasterName(redssionProperties.getMasterName())
                 .setTimeout(redssionProperties.getTimeout())
                 .setMasterConnectionPoolSize(redssionProperties.getMasterConnectionPoolSize())
                 .setSlaveConnectionPoolSize(redssionProperties.getSlaveConnectionPoolSize());
 
-        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
+        if (StringUtils.isNotBlank(redssionProperties.getPassword())) {
             serverConfig.setPassword(redssionProperties.getPassword());
         }
         return Redisson.create(config);
-    }*/
+    }
 
     /**
      * 装配locker类，并将实例注入到RedissLockUtil中
      *
      * @return
      */
-    @Bean
+//    @Bean
     RedissLockUtil redissLockUtil(RedissonClient redissonClient) {
         RedissLockUtil redissLockUtil = new RedissLockUtil();
         redissLockUtil.setRedissonClient(redissonClient);

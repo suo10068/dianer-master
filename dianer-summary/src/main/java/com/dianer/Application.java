@@ -1,11 +1,9 @@
 package com.dianer;
 
+import com.dianer.spring.MyApplicationContextInitializer;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Log4j2
@@ -14,8 +12,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-        log.info("=== Dianer Server Application Started! ===");
+//        SpringApplication.run(Application.class, args);
+
+        SpringApplication application = new SpringApplication(Application.class);
+
+//        application.addInitializers(new MyApplicationContextInitializer());
+
+        application.run(args);
+
     }
 
 }

@@ -15,7 +15,6 @@ public class RedissLockUtil {
 
     private static RedissonClient redissonClient;
 
-    @Autowired
     public void setRedissonClient(RedissonClient locker) {
         redissonClient = locker;
     }

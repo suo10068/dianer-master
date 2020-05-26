@@ -1,7 +1,7 @@
 package com.dianer.controller;
 
-import com.dianer.annotation.CacheLock;
-import com.dianer.annotation.CacheParam;
+import com.dianer.aspectj.annotation.CacheLock;
+import com.dianer.aspectj.annotation.CacheParam;
 import com.dianer.api.PersonService;
 import com.dianer.entity.Person;
 import com.dianer.mapper.PersonMapper;
