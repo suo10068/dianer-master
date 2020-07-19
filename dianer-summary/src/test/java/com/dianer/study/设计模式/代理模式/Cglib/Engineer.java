@@ -1,4 +1,4 @@
-package 学习模块.设计模式.代理模式.Cglib;
+package com.dianer.study.设计模式.代理模式.cglib;
 
 public class Engineer {
 

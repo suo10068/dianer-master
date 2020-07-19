@@ -16,6 +16,17 @@ spring:
     port: 6379
     password: suo2019
 
+  jpa:
+    database: MYSQL # Specify the DBMS
+    show-sql: false # Show or not log for each sql query
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
 # security
 #security:
 #  basic:
