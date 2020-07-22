@@ -15,74 +15,17 @@ import java.util.*;
  **/
 public class XmlParserTest {
 
-    static final String XML_FILE = "F:\\IdeaProjects\\dianer-master\\dianer-summary\\src\\test\\resources";
+    static final String XML_FILE = "F:\\IdeaProjects\\dianer-master\\dianer-summary\\src\\test\\resources\\";
 
 
     public static void main(String args[]) throws Exception {
-        SAXReader reader = new SAXReader();
-//        Document document = DocumentHelper.parseText(XML_MSG);
-        Document document = reader.read(new File(XML_FILE + "\\XML-002.xml"));
-        // 获取文档根节点
-        Element root = document.getRootElement();
 
-        Map<String, Object> map = new HashMap<>();
-        parseXML(root, map);
-        System.out.println(JSON.toJSONString(map));
+        XmlUtil xmlUtil = new XmlUtil(new File(XML_FILE + "XML-002.xml"));
+        Map<String, Object> parse = xmlUtil.parse();
+        System.out.println(JSON.toJSONString(parse));
 
     }
 
-
-    static void parseXML(Element el, Map<String, Object> map) {
-
-        // 该标签 只含有text，无子标签
-        if (el.isTextOnly()) {
-            map.put(el.getName(), el.getTextTrim());
-            return;
-        }
-
-        // 同一层次，重复标签，判定为 List列表
-        Object obj = map.get(el.getName());
-        if (obj != null) {
-
-            List<Map<String, Object>> list = null;
-
-            if (obj instanceof List) {
-                list = (List<Map<String, Object>>) obj;
-            }
-            if (obj instanceof Map) {
-                list = new ArrayList<>();
-                list.add((Map<String, Object>) obj);
-                map.put(el.getName(), list);
-            }
-
-            if (list != null){
-                Map<String, Object> tmp = new HashMap<>();
-                list.add(tmp);
-
-                Iterator<Element> it = el.elementIterator();
-                while (it.hasNext()) {
-                    Element next = it.next();
-                    parseXML(next, tmp);
-                }
-                return;
-            }
-        }
-
-        // 新标签
-        Map<String, Object> node = new HashMap<>();
-        Iterator<Attribute> aIt = el.attributeIterator();
-        while (aIt.hasNext()) {
-            Attribute attribute = aIt.next();
-            node.put(attribute.getName(), attribute.getText());
-        }
-        map.put(el.getName(), node);
-
-        Iterator<Element> it = el.elementIterator();
-        while (it.hasNext()) {
-            Element element = it.next();
-            parseXML(element, node);
-        }
-    }
 
 
     /**
