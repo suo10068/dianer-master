@@ -1,4 +1,4 @@
-package com.dianer.test;
+package com.dianer.util;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -9,24 +9,25 @@ import java.util.Map;
 
 public class FreemarkerUtil {
 
-	private Configuration cfg; // 模版配置对象
+	private Configuration conf; // 模版配置对象
+
+    public Configuration getConf() {
+        return conf;
+    }
+
+    public void setConf(Configuration conf) {
+        this.conf = conf;
+    }
+
 
 	public String process(Map<String, Object> map, String temp) throws Exception {
 		StringWriter out = new StringWriter();
-		// 创建模版对象
-		Template t = cfg.getTemplate(temp + ".ftl");
-		// 在模版上执行插值操作，并输出到制定的输出流中
-		t.process(map, out);
+		Template t = this.conf.getTemplate(temp + ".ftl"); // 创建模版对象
+		t.process(map, out); // 在模版上执行插值操作，并输出到制定的输出流中
 		return out.toString();
 	}
 
-	public Configuration getCfg() {
-		return cfg;
-	}
 
-	public void setCfg(Configuration cfg) {
-		this.cfg = cfg;
-	}
 	
 	public String toFixedLength(String str, int length, String filler,String coding) {
 		byte[] ret = new byte[length];
