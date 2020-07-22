@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FOX>
+    <SIGNONMSGSRSV1>
+        <SONRS>
+            <STATUS>
+                <CODE>0</CODE>
+                <SEVERITY>INFO</SEVERITY>
+            </STATUS>
+            <DTSERVER>2014-11-20 16:01:01</DTSERVER>
+        </SONRS>
+    </SIGNONMSGSRSV1>
+    <SECURITIES_MSGSRSV1>
+        <RBATCHTRSFRTRNRS>
+            <TRNUID>20141120plzf101</TRNUID>
+            <STATUS>
+                <CODE>0</CODE>
+                <SEVERITY>INFO</SEVERITY>
+                <MESSAGE>批量支付指令提交成功!</MESSAGE>
+            </STATUS>
+            <RSBODY>
+                <TITLE>批量支付</TITLE>
+                <ACCTFROM>
+                    <ACCTID>117010100150189475</ACCTID>
+                    <NAME>杰克找rose</NAME>
+                    <BANKDESC>兴业银行</BANKDESC>
+                    <CITY>福州</CITY>
+                </ACCTFROM>
+                <BIZTYPE>0</BIZTYPE>
+                <TOTALCOUNT>2</TOTALCOUNT>
+                <TOTALAMOUNT>2.00</TOTALAMOUNT>
+                <CHEQUENUM>111343126</CHEQUENUM>
+                <CURSYM>RMB</CURSYM>
+                <PURPOSE>批量支付测试</PURPOSE>
+                <DTDUE>2014-11-20</DTDUE>
+                <MEMO>批量支付测试</MEMO>
+                <XFERINFO>
+                    <INDX>1</INDX>
+                    <ACCTTO LOCAL="Y" INTERBANK="Y">
+                        <ACCTID>117010100150190084</ACCTID>
+                        <NAME>银企测试182</NAME>
+                        <BANKDESC>兴业银行</BANKDESC>
+                        <CITY>福州</CITY>
+                    </ACCTTO>
+                    <TRNAMT>1.00</TRNAMT>
+                    <STATUS>PAYOUT</STATUS>
+                    <ERRMSG>成功</ERRMSG>
+                </XFERINFO>
+                <XFERINFO>
+                    <INDX>2</INDX>
+                    <ACCTTO LOCAL="N" INTERBANK="N">
+                        <ACCTID>643814638168572010100100224740</ACCTID>
+                        <NAME>test</NAME>
+                        <BANKDESC>中国银行北京分行西门支行</BANKDESC>
+                        <CITY>北京庄</CITY>
+                    </ACCTTO>
+                    <TRNAMT>1.00</TRNAMT>
+                    <STATUS>PAYOUT</STATUS>
+                    <ERRMSG>成功</ERRMSG>
+                </XFERINFO>
+                <XFERPRCSTS>
+                    <XFERPRCCODE>PAYOUT</XFERPRCCODE>
+                    <DTXFERPRC>2014-11-20 16:01:02</DTXFERPRC>
+                    <MESSAGE>交易成功</MESSAGE>
+                </XFERPRCSTS>
+            </RSBODY>
+        </RBATCHTRSFRTRNRS>
+    </SECURITIES_MSGSRSV1>
+</FOX>

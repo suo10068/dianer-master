@@ -1,3 +1,15 @@
 spring:
   profiles:
     active: dev
+
+  # Freemarker 配置
+  freemarker:
+    template-loader-path: classpath:/templates/ # 模版存放路径（默认为 classpath:/templates/）
+    cache: false # 是否生成缓存，生成环境建议开启（默认为true）
+    charset: UTF-8 # 编码
+    check-template-location: true
+    content-type: text/html # content-type类型(默认为test/html)
+    expose-request-attributes: false # 设定所有request的属性在merge到模板的时候，是否要都添加到model中（默认为false）
+    expose-session-attributes: false # 设定所有HttpSession的属性在merge到模板的时候，是否要都添加到model中.(默认为false)
+    request-context-attribute: request # RequestContext属性的名称（默认为-）
+    suffix: .ftl # 模板后缀(默认为.ftl)

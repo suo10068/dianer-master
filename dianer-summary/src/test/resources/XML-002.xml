@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message k="k" M="m">
+    <Head>
+        <TrsCode> BatchPayRoll</TrsCode>
+        <ERPTrsTimestamp>2011-02-28 09:43:04</ERPTrsTimestamp>
+        <ERPJnlNo>65654168416168151</ERPJnlNo>
+        <AppId>1</AppId>
+        <ToSystemId>2</ToSystemId>
+        <Verion>1111</Verion>
+        <Cid>1100343164</Cid>
+        <UserId>jack</UserId>
+        <UserPass>a11111</UserPass>
+    </Head>
+    <Body B="b">
+        <TrnUid>TTT</TrnUid>
+        <AcctFrom>
+            <AcctNo>01012252565855888</AcctNo>
+            <AcctName>01012252565855888</AcctName>
+        </AcctFrom>
+        <ReqList>
+            <ReqData>
+                <Number>1</Number>
+                <RcvAcct>0202555556666666</RcvAcct>
+                <RcvAcctName>户名1</RcvAcctName>
+                <TranAmt>112233.99</TranAmt>
+                <PostScript>请及时查收</PostScript>
+                <TranUsage>工资</TranUsage>
+                <ReservedField1>备注1</ReservedField1>
+                <ReservedField2>备注2</ReservedField2>
+                <ReservedField3>备注3</ReservedField3>
+            </ReqData>
+            <ReqData>
+                <Number>2</Number>
+                <RcvAcct>0202555556666666</RcvAcct>
+                <RcvAcctName>户名2</RcvAcctName>
+                <TranAmt>112233.99</TranAmt>
+                <PostScript>请及时查收</PostScript>
+                <TranUsage>工资</TranUsage>
+                <ReservedField1>备注1</ReservedField1>
+                <ReservedField2>备注2</ReservedField2>
+                <ReservedField3>备注3</ReservedField3>
+            </ReqData>
+        </ReqList>
+    </Body>
+</Message>
